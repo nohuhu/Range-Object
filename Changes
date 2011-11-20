@@ -1,5 +1,11 @@
 Revision history for Perl module Range::Object.
 
+0.92  Mon Nov 21 00:26:33 2011
+
+    Removed versions from all packages except Range::Object itself.
+    It appears that having all packages versioned only leads to
+    confusion (mine, specifically).
+
 0.91  Sun Nov 20 17:11:38 2011
 
     Apparently, permission for Range::String namespace is already

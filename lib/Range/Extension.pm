@@ -16,16 +16,6 @@ use List::Util qw( first );
 
 use base qw(Range::Object);
 
-### PACKAGE VARIABLE ###
-#
-# Version of this module.
-#
-
-# This is for compatibility with older Perls
-use vars qw( $VERSION );
-
-$VERSION = '0.9';
-
 # Overload definitions
 
 use overload q{""}    => 'stringify_collapsed',
