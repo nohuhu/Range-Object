@@ -1,5 +1,13 @@
 Revision history for Perl module Range::Object.
 
+0.91  Sun Nov 20 17:11:38 2011
+
+    Apparently, permission for Range::String namespace is already
+    taken on CPAN; to avoid collision I renamed my module to
+    Range::Strings.
+
+    No other changes were made.
+
 0.9   Sun Nov 20 16:39:23 2011
 
     Cleaned up code and POD sections for CPAN release.

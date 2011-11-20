@@ -5,13 +5,13 @@ lib/Range/Extension.pm
 lib/Range/Interval.pm
 lib/Range/Object.pm
 lib/Range/Serial.pm
-lib/Range/String.pm
+lib/Range/Strings.pm
 Makefile.PL
 MANIFEST
 README
 t/00_object.t
 t/01_serial.t
-t/02_string.t
+t/02_strings.t
 t/03_extension.t
 t/04_date.t
 t/05_interval.t
