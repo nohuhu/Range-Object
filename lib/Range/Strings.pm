@@ -1,4 +1,4 @@
-package Range::String;
+package Range::Strings;
 
 # This is basically what common::sense does, but without the pragma itself
 # to remain compatible with Perls older than 5.8
@@ -42,14 +42,14 @@ sub pattern {
 ### PUBLIC INSTANCE METHOD ###
 #
 # Returns regex that is used to separate items in a range list.
-# Default for String are \r, \n or \t.
+# Default for Strings are \r, \n or \t.
 #
 
 sub separator { qr/ [\r\n\t] /xms }
 
 ### PUBLIC INSTANCE METHOD ###
 #
-# Returns default range delimiter; String use newline ("\n").
+# Returns default range delimiter; Strings use newline ("\n").
 #
 
 sub delimiter  { "\n" }
@@ -67,7 +67,7 @@ sub _list_separator { "\n" }
 ### PRIVATE INSTANCE METHOD ###
 #
 # Expands a list of items using Perl range operator.
-# Does nothing for String.
+# Does nothing for Strings.
 #
 
 sub _explode_range {
@@ -103,14 +103,14 @@ __END__
 
 =head1 NAME
 
-Range::String - Implements string collections with Range::Object API
+Range::Strings - Implements string collections with Range::Object API
 
 =head1 SYNOPSIS
 
- use Range::String;
+ use Range::Strings;
  
  # Create a new collection
- my $range = Range::String->new('foo bar', 'qux');
+ my $range = Range::Strings->new('foo bar', 'qux');
  
  # Test if a value is in range
  print "in range\n"     if  $range->in('foo');
