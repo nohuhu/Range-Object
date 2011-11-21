@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 501;
 
-BEGIN { use_ok 'Range::Interval' };
+BEGIN { use_ok 'Range::Object::Interval' };
 
 my $tests = eval do { local $/; <DATA>; };
 die "Data eval error: $@" if $@;
@@ -16,7 +16,7 @@ run_tests( $tests );
 
 __DATA__
 [
-    'Range::Interval' => [
+    'Range::Object::Interval' => [
         # Custom code
         undef,
 
@@ -158,7 +158,7 @@ __DATA__
         # Interval specific military() output after remove(), scalar
         '1000,1215/1315,1515/1545,2345',
     ],
-    'Range::Interval' => [
+    'Range::Object::Interval' => [
         # Custom code
         undef,
 
@@ -298,7 +298,7 @@ __DATA__
         # Interval specific military() output after remove(), scalar
         '130/230,1200/1330,1500/1600',
     ],
-    'Range::Interval' => [
+    'Range::Object::Interval' => [
         # Custom code
         undef,
 

@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 136;
 
-BEGIN { use_ok 'Range::Date' };
+BEGIN { use_ok 'Range::Object::Date' };
 
 my $tests = eval do { local $/; <DATA>; };
 die "Data eval error: $@" if $@;
@@ -16,7 +16,7 @@ run_tests( $tests );
 
 __DATA__
 [
-    'Range::Date' => [
+    'Range::Object::Date' => [
         # Custom code
         undef,
 

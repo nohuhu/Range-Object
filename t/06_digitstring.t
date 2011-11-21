@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 157;
 
-BEGIN { use_ok 'Range::DigitString' };
+BEGIN { use_ok 'Range::Object::DigitString' };
 
 my $tests = eval do { local $/; <DATA>; };
 die "Data eval error: $@" if $@;
@@ -16,7 +16,7 @@ run_tests( $tests );
 
 __DATA__
 [
-    'Range::DigitString' => [
+    'Range::Object::DigitString' => [
         # Custom code
         undef,
 

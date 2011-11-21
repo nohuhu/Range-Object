@@ -1,11 +1,11 @@
 Changes
-lib/Range/Date.pm
-lib/Range/DigitString.pm
-lib/Range/Extension.pm
-lib/Range/Interval.pm
+lib/Range/Object/Date.pm
+lib/Range/Object/DigitString.pm
+lib/Range/Object/Extension.pm
+lib/Range/Object/Interval.pm
 lib/Range/Object.pm
-lib/Range/Serial.pm
-lib/Range/Strings.pm
+lib/Range/Object/Serial.pm
+lib/Range/Object/String.pm
 Makefile.PL
 MANIFEST
 README

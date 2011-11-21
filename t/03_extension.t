@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 149;
 
-BEGIN { use_ok 'Range::Extension' };
+BEGIN { use_ok 'Range::Object::Extension' };
 
 my $tests = eval do { local $/; <DATA>; };
 die "Data eval error: $@" if $@;
@@ -16,7 +16,7 @@ run_tests( $tests );
 
 __DATA__
 [
-    'Range::Extension' => [
+    'Range::Object::Extension' => [
         # Custom code
         undef,
 

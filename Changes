@@ -1,5 +1,12 @@
 Revision history for Perl module Range::Object.
 
+0.93  Mon Nov 21 18:47:03 2011
+
+    Moved all Range::Object-descended packages to Range::Object::*
+    namespace. An obvious move, in hindsight.
+
+    Fixed some tests broken in 0.91.
+
 0.92  Mon Nov 21 00:26:33 2011
 
     Removed versions from all packages except Range::Object itself.

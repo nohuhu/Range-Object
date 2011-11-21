@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 101;
 
-BEGIN { use_ok 'Range::Strings' };
+BEGIN { use_ok 'Range::Object::String' };
 
 my $tests = eval do { local $/; <DATA>; };
 die "Data eval error: $@" if $@;
@@ -16,11 +16,11 @@ run_tests( $tests );
 
 __DATA__
 [
-    'Range::Strings' => [
+    'Range::Object::String' => [
         # Custom code
         undef,
 
-        # No invalid values for Range::Strings
+        # No invalid values for Range::Object::String
         [],
 
         # Valid input

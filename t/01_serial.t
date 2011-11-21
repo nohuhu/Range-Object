@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 353;
 
-BEGIN { use_ok 'Range::Serial' };
+BEGIN { use_ok 'Range::Object::Serial' };
 
 my $tests = eval do { local $/; <DATA>; };
 die "Data eval error: $@" if $@;
@@ -16,7 +16,7 @@ run_tests( $tests );
 
 __DATA__
 [
-    'Range::Serial' => [
+    'Range::Object::Serial' => [
         # Custom code
         undef,
 

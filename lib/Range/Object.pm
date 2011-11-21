@@ -22,7 +22,7 @@ use List::Util qw( first );
 # This is for compatibility with older Perls
 use vars qw( $VERSION );
 
-$VERSION = '0.92';
+$VERSION = '0.93';
 
 ### PUBLIC CLASS METHOD (CONSTRUCTOR) ###
 #

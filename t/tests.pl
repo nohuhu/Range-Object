@@ -15,7 +15,7 @@ sub run_tests {
         my $code = shift @data;
         $code->() if $code;
     
-        # Range::Interval specific data
+        # Range::Object::Interval specific data
         my $interval;
         $interval = shift @data if $module =~ /Interval/;
     
@@ -26,8 +26,8 @@ sub run_tests {
         # Invalid input test
         #
         SKIP: {
-            skip "No invalid input tests for Range::String", 4
-                if $module =~ /Range::String/;
+            skip "No invalid input tests for Range::Object::String", 4
+                if $module =~ /Range::Object::String/;
     
             my $i = 0;
             for ( @invalid_input ) {
@@ -182,7 +182,7 @@ sub run_tests {
             is $range2_size, $size,
                 "dog food $module->size() after $test()";
     
-            if ( $module eq 'Range::Interval' ) {
+            if ( $module eq 'Range::Object::Interval' ) {
                 my @military_range = $range1->military();
                 my @expected_mil   = @{ shift @data };
     

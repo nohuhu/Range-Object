@@ -1,5 +1,5 @@
-Range::Object version 0.9
-=========================
+Range::Object version 0.93
+==========================
 
 This suite of modules implements unified API for manipulating ranges of
 objects of different kinds.
