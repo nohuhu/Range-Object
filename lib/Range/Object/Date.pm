@@ -1,4 +1,4 @@
-package Range::Date;
+package Range::Object::Date;
 
 # This is basically what common::sense does, but without the pragma itself
 # to remain compatible with Perls older than 5.8
@@ -189,7 +189,7 @@ sub separator {
 
 ### PUBLIC INSTANCE METHOD ###
 #
-# For Range::Date delimiter is forward slash (/) as per ISO 8601.
+# For Range::Object::Date delimiter is forward slash (/) as per ISO 8601.
 #
 
 sub delimiter  { '/' }
@@ -490,14 +490,14 @@ __END__
 
 =head1 NAME
 
-Range::Date - Ranges as applied to dates
+Range::Object::Date - Ranges as applied to dates
 
 =head1 SYNOPSIS
 
- use Range::Date;
+ use Range::Object::Date;
  
  # Create a new range
- my $range = Range::Date->new('1970-01-01', '2012-02-27/2012-03-02');
+ my $range = Range::Object::Date->new('1970-01-01', '2012-02-27/2012-03-02');
  
  # Test if a value is in range
  print "in range\n"     if  $range->in('2012-02-29');
@@ -526,8 +526,8 @@ Range::Date - Ranges as applied to dates
 
 =head1 DESCRIPTION
 
-This module implements ranges of dates using the same API as other Range::*
-modules.
+This module implements ranges of dates using the same API as other
+Range::Object modules.
 
 Input date formats are subset of ISO 8601; only two are supported: YYYY-MM-DD
 and YYYY-MM for month-only dates.

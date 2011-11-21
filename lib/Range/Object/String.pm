@@ -1,4 +1,4 @@
-package Range::Strings;
+package Range::Object::String;
 
 # This is basically what common::sense does, but without the pragma itself
 # to remain compatible with Perls older than 5.8
@@ -93,14 +93,14 @@ __END__
 
 =head1 NAME
 
-Range::Strings - Implements string collections with Range::Object API
+Range::Object::String - Implements string collections with Range::Object API
 
 =head1 SYNOPSIS
 
- use Range::Strings;
+ use Range::Object::String;
  
  # Create a new collection
- my $range = Range::Strings->new('foo bar', 'qux');
+ my $range = Range::Object::String->new('foo bar', 'qux');
  
  # Test if a value is in range
  print "in range\n"     if  $range->in('foo');

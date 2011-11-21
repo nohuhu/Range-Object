@@ -1,4 +1,4 @@
-package Range::Serial;
+package Range::Object::Serial;
 
 # This is basically what common::sense does, but without the pragma itself
 # to remain compatible with Perls older than 5.8
@@ -130,14 +130,14 @@ __END__
 
 =head1 NAME
 
-Range::Serial - Implements ranges of integer identificators
+Range::Object::Serial - Implements ranges of integer identificators
 
 =head1 SYNOPSIS
 
- use Range::Serial;
+ use Range::Object::Serial;
  
  # Create a new range
- my $range = Range::Serial->new('1-10, 12, 15', 17..20);
+ my $range = Range::Object::Serial->new('1-10, 12, 15', 17..20);
  
  # Test if a value is in range
  print "in range\n"     if  $range->in(5);

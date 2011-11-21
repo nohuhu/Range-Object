@@ -1,4 +1,4 @@
-package Range::Interval;
+package Range::Object::Interval;
 
 # This is basically what common::sense does, but without the pragma itself
 # to remain compatible with Perls older than 5.8
@@ -23,7 +23,7 @@ use overload q{""}    => 'stringify_collapsed',
 
 ### PUBLIC CLASS METHOD (CONSTRUCTOR) ###
 #
-# Initializes new instance of Range::Interval from @input_range using
+# Initializes new instance of Range::Object::Interval from @input_range using
 # $interval length.
 #
 
@@ -410,7 +410,7 @@ __END__
 
 =head1 NAME
 
-Range::Interval - Ranges as applied to time of day intervals
+Range::Object::Interval - Ranges as applied to time of day intervals
 
 =head1 DESCRIPTION
 

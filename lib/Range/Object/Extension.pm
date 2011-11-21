@@ -1,4 +1,4 @@
-package Range::DigitString;
+package Range::Object::Extension;
 
 # This is basically what common::sense does, but without the pragma itself
 # to remain compatible with Perls older than 5.8
@@ -32,10 +32,10 @@ sub pattern {
                 (?<! [^- ] )
 
                 # First digit is mandatory, it can be *, # or 0-9
-                [0-9]
+                [*#0-9]
 
                 # Up to 14 digits can follow
-                [0-9]{0,15}
+                [0-9]{0,14}
 
                 # Can't have dash, space or end of line after digits
                 (?=
@@ -85,12 +85,14 @@ sub _list_separator { q{,} }
 my $EXPLODE_REGEX
     = qr/\A
             qw\(                        # Literal 'qw('
+            ([#*])                      # Match and save first * or #
             \d+                         # Then match some digits...
             \)                          # Closing parentheses for 1st qw()
 
             \.\.                        # Literal '..'
 
             qw\(                        # Literal 'qw('
+            \1                          # Match the * or # we saved above
             \d+                         # Some digits again
             \)                          # Close parentheses for 2nd qw()
         \z/xms;
@@ -106,8 +108,16 @@ sub _explode_range {
         s/ qw\( (.*?) \) - qw\( (.*?) \) /qw($1)..qw($2)/x;
     };
 
+    # Then save leading * or #, if it's there
+    my $prefix = q{};
+    if ($string =~ $EXPLODE_REGEX) {
+        $prefix = $1;
+        $string =~ s/\Q$prefix\E//g;
+    };
+
     # Expand the list and add leading prefix back
-    my @items = $self->SUPER::_explode_range($string);
+    my @items = map { $prefix . $_ }
+                    $self->SUPER::_explode_range($string);
 
     return @items;
 }
@@ -126,6 +136,12 @@ sub _is_in_range_hashref {
     # Unpack for brevity
     my $start  = $range_ref->{start};
     my $end    = $range_ref->{end};
+
+    # Capture leading [*#], if any, and remove it from digit strings
+    my $prefix = $start =~ / \A ([*#]) /xms;
+    $start    =~ s/ \A $prefix//xms;
+    $end      =~ s/ \A $prefix//xms;
+    $value    =~ s/ \A $prefix//xms;
 
     # Finally, compare strings
     return ( ($value ge $start) && ($value le $end) );
@@ -150,8 +166,12 @@ sub _equal_value {
 sub _next_in_range {
     my ($self, $first, $last) = @_;
 
-    # Increment the value
-    $first = ++$first;
+    # First save leading [*#] and remove it
+    my ($prefix) = $first =~ / \A ([*#]) /xms;
+    $first =~ s/ \A [*#] //xms;
+
+    # Increment the value and add prefix back
+    $first = $prefix . (++$first);
 
     return !!($first eq $last);
 }
@@ -164,42 +184,51 @@ __END__
 
 =head1 NAME
 
-Range::DigitString - Implements ranges of digit strings
+Range::Object::Extension - Implements ranges of specialized phone numbers
 
 =head1 SYNOPSIS
 
- use Range::DigitString;
+ use Range::Object::Extension;
  
  # Create a new range
- my $range = Range::DigitString->new('00-03; 0100-0103', '996-998');
+ my $range = Range::Object::Extension->new('*00-*03; 0100-0103', '#999');
  
  # Test if a value is in range
- print "in range\n"     if  $range->in('02');
- print "not in range\n" if !$range->in('999');
+ print "in range\n"     if  $range->in('*02');
+ print "not in range\n" if !$range->in('*999');
  
  # Add values to range
- $range->add('04', '0104', '999');
+ $range->add('*04', '0104', '#998');
  
  # Get full list of values
  my @list = $range->range();
  print join q{ }, @list;
  # Prints:
- # 00 01 02 03 04 0100 0101 0102 0103 0104 996 997 998 999
+ # *00 *01 *02 *03 *04 0100 0101 0102 0103 0104 #998 #999
  
  # Get collapsed string representation
  my $string = $range->range();
  print "$string\n";
  # Prints:
- # '00-04,0100-0104,996-999'
+ # '*00-*04,0100-0104,#998-#999'
  
  # Get range size
  my $size = $range->size();
- print "$size";                  # Prints: 14
-
+ print "$size";                  # Prints: 12
+ 
 =head1 DESCRIPTION
 
-This module is intended to be used with ranges of digit strings up to 16
-digits in length. 
+This module is intended to be used with ranges of internal (extension)
+phone numbers used in various PBX systems.
+
+Phone numbers are digit strings but they are not true numeric values.
+For one, the number of digits as well as their values do matter, including
+leading zeroes; secondly, in some phone systems the leading 'digit' can be
+a star (*) or hash (#) sign. This module takes into account all these
+differences.
+
+Note that this module is NOT intended to work with public phone numbers
+(NANP, E.164 etc).
 
 =head1 METHODS
 
